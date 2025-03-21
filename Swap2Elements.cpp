@@ -1,18 +1,36 @@
 #include <iostream>
 
-// Definer en struktur for elementene i listen
+// I decided to create a struct to represent each element in the list
+// and there properties. Based on the exercise description, I assume
+// that each element in the list will represent some kind of value
+// such as an integer. The struct also contains a pointer which points
+// to the next element in the list.
 struct Elem {
     int data;
     Elem* next;
 };
 
-// Funksjon for å bytte to elementer i en lineær liste
+//This will be the main function which will represent the algorithm 
+//that we have been challenged to implement. The function will take 
+//two pointers to elements in the list that we want to swap, and a
+//pointer to the head of the list. The function will then swap the
+//two elements in the list and update the head pointer if necessary.
 void swap2Elements(Elem* p1, Elem* p2, Elem*& head) {
-    if (p1 == p2) return; // Ingen bytte nødvendig hvis p1 og p2 er de samme
 
+    // I have here created three pointers. The first two pointers
+    // will be used to store the previous elements of the elements
+    // that we want to swap. The third pointer will be used to
+    // iterate through the list and is set to start at the begining 
+    // of the list which will be the head pointer. Therefore the 
+    // name; head.
     Elem* prev1 = nullptr, * prev2 = nullptr, * curr = head;
 
-    // Finn forrige element for p1 og p2
+
+    // I have here implemented a loop to find the elements that are in
+    // front of the elements p1 and p2 that we want to swap. This 
+    // loop will run until ether the current pointer is null, which will
+    // indicate that we have reached the end of the list, or until the
+    // previous elements of the ones we want to swap have been found.
     while (curr != nullptr && (prev1 == nullptr || prev2 == nullptr)) {
         if (curr->next == p1) prev1 = curr;
         if (curr->next == p2) prev2 = curr;
